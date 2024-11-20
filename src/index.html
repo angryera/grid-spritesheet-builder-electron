@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Grid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .grid-item {
+        object-fit: contain;
+        object-position: bottom center;
+        width: 100px; /* Default size, can be changed via inputs */
+        height: 100px; /* Default size, can be changed via inputs */
+      }
+      body {
+        app-region: drag;
+      }
+
+      .titlebar {
+        user-select: none;
+        app-region: drag;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans bg-gray-900 text-white m-0 p-5 box-border overflow-auto [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
+  >
+    <div id="controls" class="flex justify-start flex-wrap gap-5 mb-5">
+      <label class="flex flex-col items-start text-sm">
+        Width:
+        <input
+          type="number"
+          id="width-input"
+          value="150"
+          class="bg-gray-800 text-white border border-gray-600 p-1 mt-1 rounded text-sm"
+        />
+      </label>
+      <label class="flex flex-col items-start text-sm">
+        Height:
+        <input
+          type="number"
+          id="height-input"
+          value="150"
+          class="bg-gray-800 text-white border border-gray-600 p-1 mt-1 rounded text-sm"
+        />
+      </label>
+      <label class="flex flex-col items-start text-sm">
+        Columns:
+        <input
+          type="number"
+          id="columns-input"
+          value="3"
+          class="bg-gray-800 text-white border border-gray-600 p-1 mt-1 rounded text-sm"
+        />
+      </label>
+
+      <label class="flex justify-end flex-col items-start text-sm">
+        <div class="flex gap-2">
+          <button
+            id="download-button"
+            class="bg-purple-700 text-white border-none py-2 px-4 rounded text-sm cursor-pointer transition-colors duration-300 hover:bg-purple-900"
+          >
+            Download as PNG
+          </button>
+          <button
+            id="clear-button"
+            class="bg-red-700 text-white border-none py-2 px-4 rounded text-sm cursor-pointer transition-colors duration-300 hover:bg-red-900"
+          >
+            Clear
+          </button>
+        </div>
+      </label>
+    </div>
+
+    <div
+      id="drop-zone"
+      class="w-full h-52 border-2 border-dashed border-gray-500 flex items-center justify-center mb-5 transition-all duration-500 rounded hover:border-white cursor-pointer"
+    >
+      Drag & Drop Images Here
+    </div>
+
+    <div id="grid-container" class="grid gap-4"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
