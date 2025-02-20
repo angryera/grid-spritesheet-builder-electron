@@ -1,6 +1,14 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 
+if (require("electron-squirrel-startup")) app.quit();
+// if first time install on windows, do not run application, rather
+// let squirrel installer do its work
+const setupEvents = require("./installer/setup-events");
+if (setupEvents.handleSquirrelEvent()) {
+  process.exit();
+}
+
 function createWindow() {
   const win = new BrowserWindow({
     titleBarStyle: "hidden",
